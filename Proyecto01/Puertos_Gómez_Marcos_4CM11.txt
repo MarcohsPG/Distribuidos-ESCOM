@@ -1,0 +1,635 @@
+PROGRAMA 01
+import java.util.Scanner;
+
+public class Ej01{
+    public static void main(String[] args) {
+        var centigrados=0.0;
+        var fahrenheit=0.0;
+        System.out.println("**Programa que convierte grados Centigrados a Fahrenheit** \nCantidad en grados que quieres convertir: ");
+        Scanner numCentigrados = new Scanner(System.in);
+        centigrados = Float.parseFloat(numCentigrados.nextLine());
+        fahrenheit=(centigrados*9/5)+32;
+        System.out.println(centigrados+" grados centigrados equivalen a "+fahrenheit+" grados fahrenheit.");
+    }
+}
+*******************************************************************************
+PROGRAMA 02
+import java.util.Scanner;
+
+public class Ej02 {
+    public static void main(String[] args) {
+        System.out.println("MULTIPLICACION DE FRACCIONES\nSabiendo que la multiplicación de fracciones se representa de la siguiente forma:\n A/B * C/D = A*C / B*D \n");
+        System.out.println("Proporcioname el valor de A: ");
+        Scanner leerDatos = new Scanner(System.in);
+        var numA = leerDatos.nextInt();
+        
+        System.out.println("Proporcioname el valor de B: ");
+        var numB = leerDatos.nextInt();
+
+        System.out.println("Proporcioname el valor de C: ");
+        var numC = leerDatos.nextInt();
+
+        System.out.println("Proporcioname el valor de D: ");
+        var numD = leerDatos.nextInt();
+
+        var resNumerador = (numA*numC);
+        var resDenominador = (numB*numD);
+        var resDecimal = resNumerador/resDenominador;
+
+        System.out.println("El resultado de la multiplicación es: " + resNumerador + "/" + resDenominador+"\n En numero decimal es: " + resDecimal);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 03
+import java.util.Scanner;
+
+public class Ej03 {
+    public static void main(String[] args) {
+        System.out.println("Programa que calcula el radio de una circunferencia inscrita en un triangulo, dadas las dimensiones de todos sus lados");
+        System.out.println("Ingresa las medidas de sus lados en el siguiente orden(Hipotenusa,cateto,cateto): ");
+        Scanner lados = new Scanner(System.in);
+        var ladoHipotenusa = lados.nextFloat();
+        var ladoCateto01 = lados.nextFloat();
+        var ladoCateto02 = lados.nextFloat();
+        var mitad = ladoHipotenusa/2;
+        var altura = Math.sqrt((Math.pow(ladoCateto01, 2))-(Math.pow(mitad, 2)));
+        var area = (ladoHipotenusa*altura)/2;
+        var perimetro = ladoCateto01 + ladoCateto02 +ladoHipotenusa;
+        var resultadoRadio = ((2*area)/ perimetro);
+        System.out.println("El radio de la circunferencia inscrita es: " + resultadoRadio);
+    }
+}
+*******************************************************************************
+PROGRAMA 04
+import java.util.Scanner;
+
+public class Ej04 {
+    public static void main(String[] args) {
+        Scanner leer = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE ASIGNA DORMITORIOS DE ACUERDO AL SEXO Y EDAD");
+        System.out.println("Ingrese sexo Hombre/Mujer: ");    
+        var sexo = leer.nextLine();
+        if(sexo.equals("Hombre")){
+            System.out.println("Ingrese edad: ");    
+            var edad = leer.nextInt();
+            if (edad == 18) {
+                System.out.println(sexo+","+edad+" años = Edificio A");
+            }else if(edad > 18 && edad <23){
+                System.out.println(sexo+","+edad+" años = Edificio C");
+            }else if(edad>23){
+                System.out.println(sexo+","+edad+" años = Edificio E1");
+            }else{
+                System.out.println("Menor de edad");
+            }
+        }
+        else if(sexo.equals("Mujer")){
+            System.out.println("Ingrese edad: ");    
+            var edad = leer.nextInt();
+            if (edad == 18) {
+                System.out.println(sexo+","+edad+" años = Edificio B");
+            }else if(edad > 18 && edad <23){
+                System.out.println(sexo+","+edad+" años = Edificio D");
+            }else if(edad > 23){
+                System.out.println(sexo+","+edad+" años = Edificio E2");
+            }else{
+                System.out.println("Menor de edad");
+            }
+        }else{
+            System.out.println("Error al ingresar sexo");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 05
+import java.util.Scanner;
+
+public class Ej05 {
+    public static void main(String[] args) {
+        Scanner leer= new Scanner(System.in);
+        System.out.println("PROGRAMA QUE ASIGNA DIAS DE VACACIONES A EMPLEADOS\n Proporcioname tus años de labor:");
+        var años = leer.nextInt();
+        if(años<=5){
+            System.out.println("Dias de vacaciones proporcionados: 5");
+        }else if(años>=6 &&años<=10){
+            System.out.println("Dias de vacaciones proporcionados: 10");
+        }else if(años>=10 && años <=19){
+            System.out.println("Dias de vacaciones proporcionados: "+años);
+        }else if(años >= 20 && años <= 43){
+            System.out.println("Dias de vacaciones proporcionados: "+(años+2));
+        }else{
+            System.out.println("Dias de vacaciones proporcionados: 45");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 06
+import java.util.Scanner;
+
+public class Ej06 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE CALCULA EL COBRO DE CASETA\n 1 EJE --> MOTOCICLETA\n2 EJES --> AUTOMOVIL\n3 EJES --> CAMIONETA\n4 a 6 EJES --> CARGA \nMAS DE 6 EJES --> TRAILER");
+        System.out.println("Proporcioname el numero de ejes: ");
+        var ejes = leerDatos.nextInt();
+        switch (ejes) {
+            case 1:
+                System.out.println("Pago de caseta: $20");
+                break;
+            case 2:
+                System.out.println("Pago de caseta: $40");
+                break;
+            case 3:
+                System.out.println("Pago de caseta: $60");
+                break;
+            case 4: case 5: case 6:
+                System.out.println("Pago de caseta: $250");
+                break;
+            default:
+                System.out.println("Pago de caseta: "+(((ejes-6)*50)+250));
+                break;
+        }
+    }   
+}
+
+*******************************************************************************
+PROGRAMA 07
+
+import java.util.Scanner;
+
+public class Ej07 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("Proporcioname el tipo de contrato Hogar/Negocio: ");
+        var contrato = leerDatos.nextLine();
+        System.out.println("PROGRAMA QUE CALCULA EL COBRO DE LUZ\nProporcioname el numero de kW consumidos: ");
+        var kW = leerDatos.nextInt();
+
+        if (contrato.equals("Hogar")) {
+            if(kW >= 0 && kW<=250){
+                var cobro = kW*0.65;
+                System.out.println("Pago por la cantidad de: $"+cobro);
+            }
+            else if(kW >= 251 && kW<=500){
+                var cobro = (250*0.65)+((kW-250)*0.85);
+                System.out.println("Pago por la cantidad de: $"+cobro);
+            }
+            else if(kW >= 501 && kW<=1200){
+                var cobro = (250*0.65)+(250*0.85)+((kW-500)*1.50);
+                System.out.println("Pago por la cantidad de: $"+cobro);
+            }
+            else if(kW >= 1201 && kW<=2100){
+                var cobro = (250*0.65)+(250*0.85)+(700*1.50)+((kW-1200)*2.50);
+                System.out.println("Pago por la cantidad de: $"+cobro);
+            }else{
+                var cobro = (250*0.65)+(250*0.85)+(700*1.50)+(900*2.50)+((kW-2100)*3.0);
+                System.out.println("Pago por la cantidad de: $"+cobro);
+            }
+        } else if(contrato.equals("Negocio")){
+            var cobro = kW * 5.0;
+            System.out.println("Pago por la cantidad de: $"+cobro);
+        }else{
+            System.out.println("Error en el tipo de contrato");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 08
+
+import java.util.Scanner;
+
+public class Ej08 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE ORDENA 3 NUMEROS DE MAYOR A MENOR\n Proporcioname el primer numero: ");
+        var numA = leerDatos.nextInt();
+        System.out.println("Proporcioname el segundo numero: ");
+        var numB = leerDatos.nextInt();
+        System.out.println("Proporcioname el tercer numero: ");
+        var numC = leerDatos.nextInt();
+        if (numA > numB && numB > numC){
+            System.out.println("El orden de mayor a menor es: "+numA+" "+numB+" "+numC);
+        }else if(numA > numB && numB < numC && numC < numA){
+            System.out.println("El orden de mayor a menor es: "+numA+" "+numC+" "+numB);
+        }else if(numA < numB && numB > numC && numC > numA){
+            System.out.println("El orden de mayor a menor es: "+numB+" "+numC+" "+numA);
+        }else if(numA < numB && numB > numC && numA > numC){
+            System.out.println("El orden de mayor a menor es: "+numB+" "+numA+" "+numC);
+        }else if(numC > numB && numC > numA && numA > numB){
+            System.out.println("El orden de mayor a menor es: "+numC+" "+numA+" "+numB);
+        }else if(numC > numB && numC > numA && numA < numB){
+            System.out.println("El orden de mayor a menor es: "+numC+" "+numB+" "+numA);
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 09
+
+import java.util.Scanner;
+
+public class Ej09 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE DETERMINA SI UN NUMERO ES CAPICUO\n Proporcioname el numero: ");
+        var numero = leerDatos.nextLine();
+        char[] numArray = numero.toCharArray();
+        if(numArray.length==1){
+            System.out.println("Es numero capicuo");
+        }else if(numArray.length==2){
+            if(numArray[0]%numArray[1]==0){
+                System.out.println("Es numero capicuo");
+            }else{
+                System.out.println("NO es numero capicuo");
+            }
+        }else if(numArray.length==3){
+            if(numArray[0]%numArray[2]==0){
+                System.out.println("Es numero capicuo");
+            }else{
+                System.out.println("NO es numero capicuo");
+            }
+        }else if(numArray.length==4){
+            if((numArray[0]%numArray[3]==0)&&(numArray[1]%numArray[2]==0)){
+                System.out.println("Es numero capicuo");
+            }else{
+                System.out.println("NO es numero capicuo");
+            }
+        }else{
+            System.out.println("No es numero capicuo");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 09
+
+import java.util.Scanner;
+
+public class Ej10 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE SUMA TODOS LOS NUMERO HASTA LLEGAR AL NUMERO DADO\nProporcioname el numero: ");
+        var numero = leerDatos.nextInt();
+        var suma = 0;
+        for (int i = 1; i <= numero; i++) {
+            suma=suma + i;
+        }
+        System.out.println("La suma de todos los digitos es: "+suma);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 10
+import java.util.Scanner;
+
+public class Ej10 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE SUMA TODOS LOS NUMERO HASTA LLEGAR AL NUMERO DADO\nProporcioname el numero: ");
+        var numero = leerDatos.nextInt();
+        var suma = 0;
+        for (int i = 1; i <= numero; i++) {
+            suma=suma + i;
+        }
+        System.out.println("La suma de todos los digitos es: "+suma);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 11
+
+public class Ej11 {
+    public static void main(String[] args) {
+        for (int i = 1; i <=5000 ; i++) {
+            var numString = String.valueOf(i);
+            var numArray = numString.toCharArray();
+            int[] intArray = new int[numArray.length];
+            //Comprobar suma de cubos
+            var suma=0;
+            for(int j=0;j<=intArray.length;j++){
+                intArray[j] = Character.getNumericValue(numArray[j]);
+                System.out.println(intArray);
+            }
+            if(suma==i){
+                System.out.println(i);
+            }
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 12
+
+public class Ej12 {
+    public static void main(String[] args) {
+        System.out.println("PROGRAMA QUE DETECTA LOS NUMEROS PERFECTOS ENTRE 1-10,000");
+        System.out.println("Números perfectos entre 1 y 10,000:");
+        for (int i = 1; i <= 10000; i++) {
+            if (numeroPerfecto(i)) {
+                System.out.println(i);
+            }
+        }
+    }
+
+    public static boolean numeroPerfecto(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    
+    }
+}
+*******************************************************************************
+PROGRAMA 13
+public class Ej13 {
+    public static void main(String[] args) {
+        System.out.println("PROGRAMA QUE CALCULA AHORRO DE 20 AÑOS");
+        var saldo = 0;
+        for (int i = 1; i <= 20; i++) {
+            var intereses = saldo*0.05;
+            saldo += 10000;
+            saldo += intereses;
+        }
+        System.out.println("Los ahorros sumarian la cantidad de: $"+saldo);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 14
+
+import java.util.Scanner;
+
+public class Ej14 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("Proporcioname el numero donde inicia la serie: ");
+        var numX = leerDatos.nextInt();
+        System.out.println("Proporcioname el numero multiplo: ");
+        var numY = leerDatos.nextInt();
+        while (numX<=200) {
+            System.out.println(numX+" ");
+            numX=numX+numY;           
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 15
+import java.util.Scanner;
+
+public class Ej15 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("ADIVINA EL NUMERO");
+        var numeroAleatorio = (int) (Math.random()*100);
+        System.out.println("Ya tengo el numero, ¿List@?\n"+numeroAleatorio+"Dame el numero:");
+        var numeroUsuario = leerDatos.nextInt();
+        while (numeroAleatorio!=numeroUsuario) {
+            System.out.println("Fallaste, intentalo de nuevo:");
+            numeroUsuario = leerDatos.nextInt();
+        }
+        System.out.println("ADIVINASTE!!!!");
+    }
+}
+
+*******************************************************************************
+PROGRAMA 16
+
+import java.util.Scanner;
+
+public class Ej16 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE CALCULA EL PROMEDIO DE TODOS LOS NUMERO INGRESADOS HASTA INGRESAR CERO");
+        var numero=0;
+        var suma=0;
+        var i=0;
+        do {
+            System.out.println("Dame un numero: ");
+            numero=leerDatos.nextInt();
+            suma = suma + numero;
+            i++;
+        } while (numero!=0);
+        var promedio = suma/(i-1);
+        System.out.println("El promedio de todos los numero leidos es: "+promedio);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 17
+import java.util.Scanner;
+
+public class Ej17 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+        System.out.println("PROGRAMA QUE INVIERTE EL ORDEN DE 10 NUMEROS INGRESADOS");
+        int numeros[] = new int[10];
+        for (int i = 9; i >= 0; i--) {
+            System.out.println("Ingresa un numero: ");
+            numeros[i]=leerDatos.nextInt();
+        }
+        System.out.println("ORDEN INVERSO");
+        for (int i = 0; i < numeros.length; i++) {
+            System.out.println(numeros[i]);
+        }
+        
+    }
+}
+
+*******************************************************************************
+PROGRAMA 18
+
+import java.util.Scanner;
+
+public class Ej18 {
+    public static void main(String[] args) {
+        Scanner leerDatos=new Scanner(System.in);
+        String[] ciudades = new String[10];
+        System.out.println("PROGRAMA QUE DETERMINA EL NOMBRE DE LA CIUDAD MAS LARGO");
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Ingrese el nombre de la ciudad #" + (i + 1) + ": ");
+            ciudades[i] = leerDatos.nextLine(); 
+        }
+        String ciudadMasLarga = ciudades[0];
+        for (int i = 1; i < 10; i++) {
+            if (ciudades[i].length() > ciudadMasLarga.length()) {
+                ciudadMasLarga = ciudades[i];
+            }
+        }
+        System.out.println("La ciudad con el nombre más largo es: " + ciudadMasLarga);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 19
+import java.util.Scanner;
+
+public class Ej19 {
+    public static void main(String[] args) {
+        Scanner leeDatos = new Scanner(System.in);
+
+        int[] numeros = new int[10];
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Ingrese un número: ");
+            numeros[i] = leeDatos.nextInt();
+        }
+
+        boolean ordenadosDescendente = true;
+        for (int i = 1; i < 10; i++) {
+            if (numeros[i] > numeros[i - 1]) {
+                ordenadosDescendente = false;
+                break; 
+            }
+        }
+        if (ordenadosDescendente) {
+            System.out.println("Los números están ordenados en forma descendente.");
+        } else {
+            System.out.println("Los números no están ordenados en forma descendente.");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 20
+import java.util.Scanner;
+
+public class Ej20 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+
+        int[] numeros = new int[10];
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Ingrese un número: ");
+            numeros[i] = leerDatos.nextInt();
+        }
+        leerDatos.close();
+        int temp = numeros[9]; 
+        for (int i = 9; i > 0; i--) {
+            numeros[i] = numeros[i - 1];
+        }
+
+        numeros[0] = temp; 
+        System.out.println("Arreglo resultante después de mover una posición hacia adelante:");
+
+        for (int numero : numeros) {
+            System.out.print(numero + " ");
+        }
+    }
+}
+
+*******************************************************************************
+PROGRAMA 21
+
+import java.util.Scanner;
+
+public class Ej21 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+
+        int[][] arregloBidimensional = new int[5][5];
+
+        System.out.println("Ingrese los elementos del arreglo bidimensional (5x5):");
+        for (int fila = 0; fila < 5; fila++) {
+            for (int columna = 0; columna < 5; columna++) {
+                System.out.print("Ingrese un valor para [" + fila + "][" + columna + "]: ");
+                arregloBidimensional[fila][columna] = leerDatos.nextInt();
+            }
+        }
+
+        leerDatos.close();
+
+        int sumaTotal = 0;
+        for (int fila = 0; fila < 5; fila++) {
+            for (int columna = 0; columna < 5; columna++) {
+                sumaTotal += arregloBidimensional[fila][columna];
+            }
+        }
+        System.out.println("La suma total de los elementos en el arreglo es: " + sumaTotal);
+    }
+}
+
+*******************************************************************************
+PROGRAMA 22
+
+import java.util.Scanner;
+
+public class Ej22 {
+    public static void main(String[] args) {
+        Scanner leerDatos = new Scanner(System.in);
+
+        System.out.print("Ingrese el número de filas de la primera matriz: ");
+        int filasA = leerDatos.nextInt();
+
+        System.out.print("Ingrese el número de columnas de la primera matriz: ");
+        int columnasA = leerDatos.nextInt();
+
+        System.out.print("Ingrese el número de filas de la segunda matriz: ");
+        int filasB = leerDatos.nextInt();
+
+        System.out.print("Ingrese el número de columnas de la segunda matriz: ");
+        int columnasB = leerDatos.nextInt();
+
+        if (columnasA != filasB) {
+            System.out.println("No es posible multiplicar estas matrices. El número de columnas de la primera matriz debe ser igual al número de filas de la segunda matriz.");
+            leerDatos.close();
+            return;
+        }
+
+        int[][] matrizA = new int[filasA][columnasA];
+        int[][] matrizB = new int[filasB][columnasB];
+
+        System.out.println("Ingrese los valores de la primera matriz:");
+        for (int i = 0; i < filasA; i++) {
+            for (int j = 0; j < columnasA; j++) {
+                System.out.print("Ingrese el valor para [" + i + "][" + j + "]: ");
+                matrizA[i][j] = leerDatos.nextInt();
+            }
+        }
+
+        System.out.println("Ingrese los valores de la segunda matriz:");
+        for (int i = 0; i < filasB; i++) {
+            for (int j = 0; j < columnasB; j++) {
+                System.out.print("Ingrese el valor para [" + i + "][" + j + "]: ");
+                matrizB[i][j] = leerDatos.nextInt();
+            }
+        }
+
+        leerDatos.close();
+
+        int[][] resultado = multiplicarMatrices(matrizA, matrizB);
+
+        System.out.println("Resultado de la multiplicación de matrices:");
+        for (int i = 0; i < resultado.length; i++) {
+            for (int j = 0; j < resultado[0].length; j++) {
+                System.out.print(resultado[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static int[][] multiplicarMatrices(int[][] matrizA, int[][] matrizB) {
+        int filasA = matrizA.length;
+        int columnasA = matrizA[0].length;
+        int filasB = matrizB.length;
+        int columnasB = matrizB[0].length;
+
+        int[][] resultado = new int[filasA][columnasB];
+
+        for (int i = 0; i < filasA; i++) {
+            for (int j = 0; j < columnasB; j++) {
+                for (int k = 0; k < columnasA; k++) {
+                    resultado[i][j] += matrizA[i][k] * matrizB[k][j];
+                }
+            }
+        }
+
+        return resultado;
+    }
+}
