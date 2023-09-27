@@ -1,0 +1,5 @@
+La expresión de ocurrencia anterior siguiente "a -> b" se lee como:
+A)A ocurre antes que B
+B)B ocurre si A ocurre
+C)A ocurre despues que B
+D)A ocurre si B ocurre

@@ -1,4 +1,4 @@
-package Clase07;
+package clase07;
 public class EjClase06{
 
     public static void main(String[] args) {
@@ -12,6 +12,13 @@ public class EjClase06{
                 cadenota.append((char)(Math.random()*(26)+65));
             }
         }
-        System.out.println(cadenota);
+        int contador = 0;
+        int indice = cadenota.indexOf("IPN");
+        while (indice!=-1) {
+            contador++;
+            indice = cadenota.indexOf("IPN", indice + 1);
+            }
+        
+        System.out.println("Se encontró "+contador+" veces");
     }   
 }
