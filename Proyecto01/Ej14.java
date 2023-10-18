@@ -7,7 +7,9 @@ public class Ej14 {
         var numX = leerDatos.nextInt();
         System.out.println("Proporcioname el numero multiplo: ");
         var numY = leerDatos.nextInt();
-        while (numX<=200) {
+        leerDatos.close();
+        while (numX<=200) 
+        {
             System.out.println(numX+" ");
             numX=numX+numY;           
         }
