@@ -47,8 +47,6 @@ public class AnalisisDatos {
         String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
         String keywordToClassify = "PREESCOLAR"; // Palabra clave por la que deseas clasificar
         int total = 0;
-        int countPreescolarMujeres = 0;
-        int countPreescolarHombres = 0;
         Map<String, StringBuilder> classifiedLines = new HashMap<>();
 
         try {
@@ -57,18 +55,14 @@ public class AnalisisDatos {
 
             while ((line = reader.readLine()) != null) {
                 String[] keywords = line.split(",");
-                String genero = keywords[0].length() >= 12 ? Character.toString(keywords[0].charAt(10)) : "";
+
                 for (String keyword : keywords) {
-                    if (keyword.equals(keywordToClassify)&&genero.equalsIgnoreCase("M")) {
+                    if (keyword.equals(keywordToClassify)) {
                         if (!classifiedLines.containsKey(keywordToClassify)) {
                             total++;
-                        }else if (!classifiedLines.containsKey(keywordToClassify) && genero.equalsIgnoreCase("H")) {
-                            total++;
-                            countPreescolarHombres++;
                         }
-                        
+                        break;
                     }
-                    break;
                 }
             }
 
@@ -78,6 +72,47 @@ public class AnalisisDatos {
             e.printStackTrace();
         }
         return total;
+    }
+
+    public static ArrayList<Integer> ClasificarPreescolarYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayPreescolar = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countPreescolar = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String edad1 = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(4)) : "";
+                    String edad2 = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(5)) : "";
+                    String edadStr = edad1+edad2;
+                    int edadInt = Integer.parseInt(edadStr);
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("PREESCOLAR")&&genero.equalsIgnoreCase("H")) {
+                        countPreescolar++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("PREESCOLAR")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countPreescolar++;
+                    }
+                }
+            }
+            arrayPreescolar.add(countPreescolar);
+            arrayPreescolar.add(countHombres);
+            arrayPreescolar.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayPreescolar;
     }
 
     public static int ClasificarPrimaria() {
@@ -111,6 +146,43 @@ public class AnalisisDatos {
         return total;
     }
 
+    public static ArrayList<Integer> ClasificarPrimariaYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayPrimaria = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countPrimaria = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("PRIMARIA")&&genero.equalsIgnoreCase("H")) {
+                        countPrimaria++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("PRIMARIA")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countPrimaria++;
+                    }
+                }
+            }
+            arrayPrimaria.add(countPrimaria);
+            arrayPrimaria.add(countHombres);
+            arrayPrimaria.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayPrimaria;
+    }
+
     public static int ClasificarSecundaria() {
         String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
         String keywordToClassify = "SECUNDARIA"; // Palabra clave por la que deseas clasificar
@@ -140,6 +212,43 @@ public class AnalisisDatos {
             e.printStackTrace();
         }
         return total;
+    }
+
+    public static ArrayList<Integer> ClasificarSecundariaYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arraySecundaria = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countSecundaria = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("SECUNDARIA")&&genero.equalsIgnoreCase("H")) {
+                        countSecundaria++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("SECUNDARIA")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countSecundaria++;
+                    }
+                }
+            }
+            arraySecundaria.add(countSecundaria);
+            arraySecundaria.add(countHombres);
+            arraySecundaria.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arraySecundaria;
     }
 
     public static int ClasificarPrepa() {
@@ -173,6 +282,43 @@ public class AnalisisDatos {
         return total;
     }
 
+    public static ArrayList<Integer> ClasificarPrepaYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayPrepa = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countPrepa = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("PREPARATORIA")&&genero.equalsIgnoreCase("H")) {
+                        countPrepa++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("PREPARATORIA")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countPrepa++;
+                    }
+                }
+            }
+            arrayPrepa.add(countPrepa);
+            arrayPrepa.add(countHombres);
+            arrayPrepa.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayPrepa;
+    }
+
     public static int ClasificarUni() {
         String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
         String keywordToClassify = "UNIVERSIDAD"; // Palabra clave por la que deseas clasificar
@@ -202,6 +348,43 @@ public class AnalisisDatos {
             e.printStackTrace();
         }
         return total;
+    }
+
+    public static ArrayList<Integer> ClasificarUniYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayUni = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countUni = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("UNIVERSIDAD")&&genero.equalsIgnoreCase("H")) {
+                        countUni++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("UNIVERSIDAD")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countUni++;
+                    }
+                }
+            }
+            arrayUni.add(countUni);
+            arrayUni.add(countHombres);
+            arrayUni.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayUni;
     }
 
     public static int ClasificarMaestria() {
@@ -235,6 +418,43 @@ public class AnalisisDatos {
         return total;
     }
 
+    public static ArrayList<Integer> ClasificarMestriaYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayMaestria = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countMaestria = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("MAESTRIA")&&genero.equalsIgnoreCase("H")) {
+                        countMaestria++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("MAESTRIA")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countMaestria++;
+                    }
+                }
+            }
+            arrayMaestria.add(countMaestria);
+            arrayMaestria.add(countHombres);
+            arrayMaestria.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayMaestria;
+    }
+
     public static int ClasificarDoctorado() {
         String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
         String keywordToClassify = "DOCTORADO"; // Palabra clave por la que deseas clasificar
@@ -266,6 +486,43 @@ public class AnalisisDatos {
         return total;
     }
 
+    public static ArrayList<Integer> ClasificarDoctoradoYSexo() {
+        String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
+        ArrayList<Integer> arrayDoctorado = new ArrayList<>();
+        int countHombres = 0;
+        int countMujeres = 0;
+        int countDoctorado = 0;
+
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] datos = line.split(",");
+                if (datos.length >= 3) {
+                    String genero = datos[0].length() >= 12 ? Character.toString(datos[0].charAt(10)) : "";
+                    String nivelEducativo = datos[2].trim(); // Suponiendo que el nivel educativo está en la posición 2
+                    
+                    if (nivelEducativo.equalsIgnoreCase("DOCTORADO")&&genero.equalsIgnoreCase("H")) {
+                        countDoctorado++;
+                        countHombres++;
+                    }else if (nivelEducativo.equalsIgnoreCase("DOCTORADO")&&genero.equalsIgnoreCase("M")) {
+                        countMujeres++;
+                        countDoctorado++;
+                    }
+                }
+            }
+            arrayDoctorado.add(countDoctorado);
+            arrayDoctorado.add(countHombres);
+            arrayDoctorado.add(countMujeres);
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return arrayDoctorado;
+    }
+
     public static int TotalMujeres() {
         String filePath = "Registros.txt"; // Reemplaza con la ruta de tu archivo
         int countMujeres = 0;
@@ -285,7 +542,6 @@ public class AnalisisDatos {
             }
 
             reader.close();
-            System.out.println("Total de Mujeres: " + countMujeres);
         } catch (IOException e) {
             e.printStackTrace();
         }

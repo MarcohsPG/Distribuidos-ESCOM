@@ -18,7 +18,7 @@ public class GraficaDeBarras extends JPanel {
         this.datos = datos;
         this.etiquetas = etiquetas;
         this.etiquetaEjeY = etiquetaEjeY;
-        this.maxAltura = (datos.stream().max(Integer::compare).orElse(0))/6;        
+        this.maxAltura = (datos.stream().max(Integer::compare).orElse(0))/5;        
 
     }
 
@@ -67,7 +67,7 @@ public class GraficaDeBarras extends JPanel {
                         datos.add(AnalisisDatos.ClasificarMaestria());
                         datos.add(AnalisisDatos.ClasificarDoctorado());
                         datos.add(AnalisisDatos.ObtenerTotal());
-                        maxAltura=(datos.stream().max(Integer::compare).orElse(0))/6;
+                        maxAltura=(datos.stream().max(Integer::compare).orElse(0))/5;
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
