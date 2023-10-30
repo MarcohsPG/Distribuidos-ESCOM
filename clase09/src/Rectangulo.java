@@ -1,20 +1,15 @@
 public class Rectangulo {
 
-    private Coordenada superiorIzq, inferiorDer;
+    private Coordenada superiorIzq;// se crea objeto de tipo Coordenada
+    private Coordenada inferiorDer;// se crea objeto de tipo Coordenada
 
-    public Rectangulo(){
-
-        superiorIzq = new Coordenada(0,0);
-
-        inferiorDer = new Coordenada(0,0);
-
-    }
+    //constructores
 
     public Rectangulo(double xSupIzq, double ySupIzq, double xInfDer, double yInfDer){
 
-        superiorIzq = new Coordenada(xSupIzq, ySupIzq);
+        this.superiorIzq = new Coordenada(xSupIzq, ySupIzq);
 
-        inferiorDer = new Coordenada(xInfDer, yInfDer);        
+        this.inferiorDer = new Coordenada(xInfDer, yInfDer);        
 
     }
 
@@ -22,11 +17,7 @@ public class Rectangulo {
         this.superiorIzq=c1;
         this.inferiorDer=c2;
     }
-
-
-
     
-
     //Metodo getter de la coordenada superior izquierda
 
     public Coordenada superiorIzquierda( ) { return superiorIzq; }
