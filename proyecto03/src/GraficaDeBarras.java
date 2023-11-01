@@ -1,3 +1,7 @@
+/*Alumno: PUERTOS GOMEZ MARCOS
+ * PROYECTO 03
+ * Gupo: 4CM11
+ */
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -33,7 +37,6 @@ public class GraficaDeBarras extends JPanel {
         for (int i = 0; i < datos.size()-1; i++) {
             int valor = datos.get(i);
             int altoBarra = (int) ((double) valor / maxAltura * (getHeight()-30));
-            System.out.println(maxAltura); // Escalar el valor para ajustarse al panel
             g.setColor(Color.blue);
             g.fillRect(x, getHeight() - 30 - altoBarra, anchoBarra, altoBarra);
             g.setColor(Color.black);

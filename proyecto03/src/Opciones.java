@@ -1,3 +1,7 @@
+/*Alumno: PUERTOS GOMEZ MARCOS
+ * PROYECTO 03
+ * Gupo: 4CM11
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -83,8 +87,8 @@ public class Opciones {
                     } else if (nivel == 6) {
                         ArrayList<Integer> listMaestria = AnalisisDatos.ClasificarMestriaYSexo();
                         System.out.println("Total de ciudadanos con maestria: " + listMaestria.get(0));
-                        System.out.println("Hombres con universidad: " + listMaestria.get(1));
-                        System.out.println("Mujeres con universidad: " + listMaestria.get(2));
+                        System.out.println("Hombres con maestria: " + listMaestria.get(1));
+                        System.out.println("Mujeres con maestria: " + listMaestria.get(2));
                     } else if (nivel == 7) {
                         ArrayList<Integer> listDoctorado = AnalisisDatos.ClasificarDoctoradoYSexo();
                         System.out.println("Total de ciudadanos con doctorado: " + listDoctorado.get(0));
