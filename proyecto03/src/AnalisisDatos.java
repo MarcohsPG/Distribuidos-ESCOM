@@ -1,3 +1,7 @@
+/*Alumno: PUERTOS GOMEZ MARCOS
+ * PROYECTO 03
+ * Gupo: 4CM11
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;

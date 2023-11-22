@@ -7,8 +7,7 @@ JC = javac
 	$(JC) $(JFLAGS) $*.java
 
 CLASSES = \
-		  PruebaRectangulo.java \
-		  Rectangulo.java \
+		  PoligonoIrreg.java \
 		  Coordenada.java \
 
 default: classes
@@ -19,5 +18,5 @@ clean:
 	$(RM) *.class
 	
 run:
-	java PruebaRectangulo
+	java PoligonoIrreg
 

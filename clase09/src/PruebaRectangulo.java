@@ -8,7 +8,7 @@ public class PruebaRectangulo {
 
         double ancho, alto;
         
-        Coordenada c1= new Coordenada(2, 3);
+        Coordenada c1= new Coordenada(1, 3);
         Coordenada c2 = new Coordenada(5, 1);
         
         Rectangulo rect2 = new Rectangulo(c1, c2);
@@ -26,11 +26,11 @@ public class PruebaRectangulo {
         //
         System.out.println("Calculando el área de un rectángulo dadas sus coordenadas en un plano cartesiano:");
 
-        System.out.println(rect1);
+        System.out.println(rect2);
 
-        alto = rect1.superiorIzquierda().ordenada() - rect1.inferiorDerecha().ordenada();
+        alto = rect2.superiorIzquierda().ordenada() - rect2.inferiorDerecha().ordenada();
 
-        ancho = rect1.inferiorDerecha().abcisa() - rect1.superiorIzquierda().abcisa();
+        ancho = rect2.inferiorDerecha().abcisa() - rect2.superiorIzquierda().abcisa();
 
         System.out.println("El área del rectángulo es = " + ancho*alto);
 
